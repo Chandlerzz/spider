@@ -18,7 +18,11 @@ class IPPool:
         proxy = self.get_proxy().get("proxy")
         while retry_count > 0:
             try:
-                html = requests.get(url,headers=headers,proxies={"http": "http://{}".format(proxy)})
+                proxies ={
+                    "http": "http://{}".format(proxy),
+                    "https": "https://{}".format(proxy),
+                    }
+                html = requests.get(url,headers=headers,proxies=proxies)
                 return html
             except Exception:
                 retry_count -= 1
