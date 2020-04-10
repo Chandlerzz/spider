@@ -38,11 +38,11 @@ def getinfo(ua,baseUrl,cursor):
 if __name__ == "__main__":
     
     nav = sys.argv[1]
-    while(nav<55000):
+    while(int(nav)<55000):
         try:
             getinfo(ua,baseUrl,cursor)
         except:
             print('error')
         conn.commit()
-        time.sleep(random.randint(10,20))
-        nav=nav+1
+        time.sleep(random.randint(1,2))
+        nav=int(nav)+1

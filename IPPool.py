@@ -19,10 +19,8 @@ class IPPool:
         while retry_count > 0:
             try:
                 html = requests.get(url,headers=headers,proxies={"http": "http://{}".format(proxy)})
-                # 使用代理访问
                 return html
             except Exception:
                 retry_count -= 1
-        # 出错5次, 删除代理池中代理
-        delete_proxy(proxy)
+        self.delete_proxy(proxy)
         return None
